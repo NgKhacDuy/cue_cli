@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
+import 'package:cue_cli/helper/app_constant.dart';
 import 'package:cue_cli/helper/logs.dart';
 
 class UpdateCommand extends Command {
@@ -8,7 +9,7 @@ class UpdateCommand extends Command {
   String get description => "Update the project";
 
   @override
-  String get name => "Check for updates and update the CLI tool";
+  String get name => "update";
 
   @override
   Future<void> run() async {
@@ -16,7 +17,8 @@ class UpdateCommand extends Command {
       'pub',
       'global',
       'activate',
-      'my_cli',
+      '-sgit',
+      'https://github.com/${AppConstant.githubRepo}',
     ], runInShell: true);
 
     // Log the standard output with info level
